@@ -13,6 +13,7 @@ func BenchmarkFmtFscanWithBufio(b *testing.B) {
 	if err != nil {
 		panic(err)
 	}
+	b.ResetTimer()
 	r := bufio.NewReader(os.Stdin)
 	for i := 0; i < b.N; i++ {
 		x := readInt64Fscanf(r)
@@ -28,6 +29,7 @@ func BenchmarkFmtFscanWithOsStdin(b *testing.B) {
 	if err != nil {
 		panic(err)
 	}
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		x := readInt64Fscanf(os.Stdin)
 		if x == 0 {
@@ -42,6 +44,7 @@ func BenchmarkFmtScan(b *testing.B) {
 	if err != nil {
 		panic(err)
 	}
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		x := readInt64Scan()
 		if x == 0 {
